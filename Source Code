@@ -1,0 +1,86 @@
+import random
+
+list_1 = ['able','acid','aged','also','area','army','away','baby','back','ball','band','bank','base',
+          'beat','been','beer','bell','belt','best','bill','bird','blow','blue','boat','body','bomb',
+          'book','boom','born','boss','both','bowl','bulk','burn','bush','busy','call','calm','came',
+          'care','case','cash','cast','cell','chat','chip','city','club','coal','coat','code','cold','come','cook','bath','bear','bond','bone','camp','card','cool','cope','copy','cost','crew','crop,''dark','done','door','dose','down','draw','drew','drop','drug']
+
+list_2 = ['Adult','Agent','Anger','Apple','Award','Basis','Beach','Birth','Block','Blood','Board',
+          'Break','Brown','Buyer','Cause','Chain','Chair','Chest','Chief','Child','China','Claim','Class','Clock','Coach','Brain','Bread','Youth','Coast','Court','Cover','Cream','Crime','Cross','Crowd','Crown','Cycle','Dance','Death','Depth','Doubt','Draft','Drama','Dream','Dress','Drink','Drive','Earth','Enemy','Entry','Error','Event','Faith','Fault','Field','Fight','Final','Floor','Focus','Force','Frame','Frank','Front','Fruit','Glass','Grant','Grass','Green','Group','Guide','Heart','Henry','Horse','Hotel','House','Image','Index','Input','Issue','Japan','Jones','Judge','Knife','Price','Layer','Level','Light','Limit','Lunch','Major','March','Match','Metal','Model','Money','Month','Motor','Thing','Mouth','Music','Night','Noise','North','Novel','Nurse','Offer','Order','Other','Owner','Panel','Paper','Party','Peace','Phase','Phone','Piece','Pilot','Pitch','Place','Plane','Plant','Plate','Point','Pound','Power','Press','Pride','Prize','Proof','Queen','Radio','Range','Ratio','Reply','Right','River','Round','Route','Rugby','Scale','Scene','Scope','Score','Sense','Shape','Share','Sheep','Sheet','Shift','Shirt','Shock','Sight','Simon','Skill','Sleep','Smile','Smith','Smoke','Sound','South','Space','Speed','Spite','Sport','Squad','Staff','Stage','Start','State','Steam','Steel','Stock','Stone','Store','Study','Stuff','Style','Sugar','Table','Taste','Terry','Theme','Title','Total','Touch','Tower','Track','Trade','Train','Trend','Trial','Trust','Truth','Uncle','Union','Unity','Value','Video','Visit','Voice','Waste','Watch','Water','While','White','Whole','Woman','World']
+
+list_3 = ['python','bottle','bottom','bought','branch','breath','bridge','bright','broken','budget',
+          'button','camera','cancer','cannot','carbon','career','castle','casual','caught','center','centre','chance','change','charge','choice','choose','chosen','church','circle','client','closed','closer','coffee','column','combat','coming','common','comply','copper','corner','costly','county','couple','course','covers','create','credit','crisis','custom','damage','danger','dealer','debate','decade','decide','defeat','defend','define','degree','demand','depend','deputy','desert','design','desire','detail','detect','device','differ','dinner','direct','doctor','dollar','domain','double','driven','driver','during','easily','eating','editor','effect','effort','eighth','either','eleven','emerge','empire','employ','enable','ending','energy','engage','engine','enough','ensure','entire','entity','equity','escape','estate','ethnic','exceed','excess','expand','expect','expert','export','extend','extent','fabric','facing','factor','failed','fairly','fallen','family','famous','father','fellow','female','figure','filing','finger','finish','flight','future','burden','bureau','flying','follow','forced','forest','forget','formal','format','former','foster','fought','fourth','friend']
+
+
+def loop_logic(z):
+
+        while z==1:
+            
+            guess=0
+            print('\nDo you want to play again?')
+            n=input()
+
+            if n=='n' or n=='N' or n=='no' or n=='No' or n=='NO':
+                break
+            logic()
+
+        print('Thanks for playing our game!')
+
+def logic():
+    
+    guess = 0
+    print('Guess the Word! \U0001F600 \n')
+    print('Choose difficulty level:\n1.Easy(4 letter word) \n2.Medium(5 letter word) \n3.Hard(6 letter word)')
+    diff_level = int(input(':'))
+
+    if diff_level==1:
+        i = random.randint(1,len(list_1))
+        word = list_1[i]
+        print('Hint 1: First letter is- ',word[0])
+        print('Hint 2: Third letter is- ',word[2])
+        print("\n( write all letter in lowercase)")
+
+    if diff_level==2:
+        i = random.randint(1,len(list_2))
+        word = list_2[i]
+        print('Hint 1: Second letter is- ',word[1])
+        print('Hint 2: Third letter is- ',word[2])
+        print('Hint 3: Forth letter is- ',word[3])
+        print("\n( write all letter in lowercase excep first)")
+
+        
+
+    if diff_level==3:
+        i = random.randint(1,len(list_3))
+        word = list_3[i]
+        print('Hint 1: First letter is- ',word[0])
+        print('Hint 2: Third letter is- ',word[2])
+        print('Hint 3: Sixth letter is- ',word[5])
+        print("\n( write all letter in lowercase)")
+
+
+    while guess<3:
+
+        play= input(':')
+
+        if play==word:
+            print("Woohoo!, Your guess is correct \nYou took",guess,"number of guesses.\U0001F600")
+            if guess==0:
+                print("You are incredible!")
+            if guess==1:
+                print("Excellent!")
+            if guess==2:
+                print("Just died!")
+            loop_logic(1)
+            break
+        else:
+            print("Sorry, Your guess is incorrect!")
+
+        guess+=1
+
+    if guess >=3:
+        print('\nSorry 3 guesses are finished!, YOU LOSE\nthe number was: ',guess,'The word was: ',word)
+        loop_logic(1)
+
+
+logic()
